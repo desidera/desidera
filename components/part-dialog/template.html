@@ -1,0 +1,12 @@
+<div id="overlay"></div>
+<div id="dialog">
+  <div id="header">
+    <div id="close" ev.click="on_click_close">close</div>
+  </div>
+  <div id="main">
+    <slot></slot>
+  </div>
+  <div id="footer">
+    <slot name="buttons"></slot>
+  </div>
+</div>
