@@ -1,0 +1,23 @@
+:host {
+  display: block;
+}
+
+#label {
+  font-weight: bolder;
+  display: block;
+  text-transform: capitalize;
+}
+
+#input {
+  background-color: none;
+  border: none;
+  border-bottom: 2px solid #aaa;
+  min-width: 300px;
+  padding: .25em 0em;
+  font-size: inherit;
+  outline: none;
+}
+
+#input:focus {
+  outline: none;
+}
