@@ -1,4 +1,4 @@
-<div id="overlay"></div>
+<div id="overlay" ev.click="on_click_close"></div>
 <div id="dialog">
   <div id="header">
     <div id="close" ev.click="on_click_close">close</div>
@@ -7,6 +7,6 @@
     <slot></slot>
   </div>
   <div id="footer">
-    <slot name="buttons"></slot>
+    <slot name="footer"></slot>
   </div>
 </div>
