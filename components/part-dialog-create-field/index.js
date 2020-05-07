@@ -16,7 +16,9 @@ export default class extends Pantarei.Component {
   async on_click_create (event) {
     let model = this.data.model
     let values = this.refs.form.values
-    await this.action('create_model_field', values)
+    await this.action('create_model_field', {
+      model_id: model._id, field: values
+    })
     this.close()
   }
 

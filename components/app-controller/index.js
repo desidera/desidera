@@ -89,7 +89,13 @@ export default class extends Pantarei.Controller {
   async get_model_field ({ model_id, field_id }) {}
 
   async create_model_field ({ model_id, field }) {
-    console.log(...arguments)
+    let response = await this.api('put_model_field', {
+      collection_name: 'models',
+      model_id: model_id,
+      field_name: 'fields',
+      field: field
+    })
+    return response.value
   }
 
   async update_model_field ({ model_id, field_id, field }) {}
