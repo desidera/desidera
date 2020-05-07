@@ -6,7 +6,8 @@ export default class Part extends Pantarei.Component {
       'part-field-date',
       'part-field-number',
       'part-field-string',
-      'part-field-text'
+      'part-field-text',
+      'part-field-enum'
     ]
   }
 

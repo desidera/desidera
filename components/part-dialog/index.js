@@ -10,6 +10,7 @@ export default class extends Pantarei.Component {
   }
 
   on_click_close (event) {
+    event.stopPropagation()
     this.close()
   }
 

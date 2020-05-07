@@ -13,12 +13,12 @@ module.exports = async function (collection_name) {
     return [error, null]
   }
 
+  let create_id = database.create_id
+
   try {
     collection = await database.collection(collection_name)
-    collection.create_id = database.create_id
+    collection.create_id = create_id
   } catch (error) {
-    console.log({ collection_name })
-    console.warn(error)
     return [error, null]
   }
 

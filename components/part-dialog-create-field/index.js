@@ -1,16 +1,23 @@
 
 export default class extends Pantarei.Component {
 
-  on_click_close (event) {
+  open () {
+    this.refs.dialog.open()
+  }
+
+  close () {
     this.refs.dialog.close()
   }
 
-  on_click_create (event) {
-    let name = this.refs.input_name.value
-    let type = this.refs.input_type.value
+  on_click_close (event) {
+    this.close()
+  }
 
-    let field = { name, type }
-    this.fire('submit', field)
+  async on_click_create (event) {
+    let model = this.data.model
+    let values = this.refs.form.values
+    await this.action('create_model_field', values)
+    this.close()
   }
 
 }

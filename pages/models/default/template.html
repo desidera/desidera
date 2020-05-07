@@ -5,19 +5,20 @@
   </div>
 
   <div id="content">
-    <h1 id="title" text="model.name"></h1>
-    <div id="description" text="model.description"></div>
+    <h1 id="title" text="data.model.name"></h1>
+    <div id="description" text="data.model.description"></div>
     <part-button id="button_edit_model" ev.click="on_click_edit_model">edit</part-button>
   </div>
 
+  <h3>Fields</h3>
+
   <part-button id="button_create_field" ev.click="on_click_create_field">add field</part-button>
 
-  <part-list-field id="fields" data.items="model.fields" ev.click_edit="on_click_edit_field"></part-list-field>
+  <part-list-field id="fields" data.items="data.model.fields" ev.click_edit="on_click_edit_field"></part-list-field>
 
-  <part-dialog-edit-model id=""></part-dialog-edit-model>
+  <part-dialog-edit-model id="dialog_edit_model" data.model="data.model"></part-dialog-edit-model>
 
-  <part-dialog-create-field id=""></part-dialog-create-field>
+  <part-dialog-create-field id="dialog_create_field" data.model="data.model"></part-dialog-create-field>
 
-  <part-dialog-edit-field id=""></part-dialog-edit-field>
-
+  <part-dialog-edit-field id="dialog_edit_field" data.model="data.model"></part-dialog-edit-field>
 </div>

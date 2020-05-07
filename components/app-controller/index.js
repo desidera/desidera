@@ -88,7 +88,9 @@ export default class extends Pantarei.Controller {
 
   async get_model_field ({ model_id, field_id }) {}
 
-  async create_model_field ({ model_id, field }) {}
+  async create_model_field ({ model_id, field }) {
+    console.log(...arguments)
+  }
 
   async update_model_field ({ model_id, field_id, field }) {}
 

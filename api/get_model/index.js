@@ -4,10 +4,11 @@ let find_item = require('../_find_item/index.js')
 
 module.exports = api(async function (request) {
   let body = await parse_body(request)
-  let collection = body.collection
+  let collection_name = body.collection
+  let model = body.model
   let query = body.query
 
-  let item = await find_item(collection, query)
+  let item = await find_item(collection_name, model._id, query)
 
   return item
 })

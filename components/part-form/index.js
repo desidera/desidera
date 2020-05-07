@@ -6,7 +6,8 @@ export default class Part extends Pantarei.Component {
       'part-field-date',
       'part-field-number',
       'part-field-string',
-      'part-field-text'
+      'part-field-text',
+      'part-field-enum'
     ]
   }
 
@@ -57,6 +58,7 @@ export default class Part extends Pantarei.Component {
     component.data = component.data || {}
     component.data.id = field.id
     component.data.label = field.label || field.name
+    component.data.schema = field
     this.appendChild(component)
     this.components[field.id] = component
   }
