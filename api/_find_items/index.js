@@ -3,7 +3,11 @@ let solve_relations = require('../_solve_relations/index.js')
 
 module.exports = async function (collection_name, query) {
   query = query || {}
-  let collection = await open_collection(collection_name)
+  let [error, collection] = await open_collection(collection_name)
+  if (error) {
+    return [error, null]
+  }
+
   let cursor = collection.find(query)
 
   if (query.order_by) {
@@ -16,15 +20,7 @@ module.exports = async function (collection_name, query) {
     cursor.limit(query.per_page)
   }
 
-  let items = []
-
-  if (query.include) {
-    while (cursor.hasNext()) {
-      let item = cursor.next()
-      item = await solve_relations(collection_name, item, include)
-      items.push(item)
-    }
-  }
+  let items = cursor.toArray()
 
   return items
 }

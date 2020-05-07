@@ -2,7 +2,8 @@
 export default class extends Pantarei.Component {
 
   async connected () {
-    this.data.models = await this.action('get_models')
+    let models = await this.action('get_models')
+    this.data.models = models
   }
 
   on_click_button_add (event) {

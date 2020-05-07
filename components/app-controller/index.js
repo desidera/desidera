@@ -23,7 +23,7 @@ export default class extends Pantarei.Controller {
     try {
       let response = await fetch(`/api/${action}`, config)
       let data = await response.json()
-      return { data }
+      return { value: data.value }
     } catch (error) {
       return { error }
     }
@@ -39,9 +39,32 @@ export default class extends Pantarei.Controller {
 
 
 
-  async get_models (params) {}
+  async get_models (params) {
+    let response = await this.api('get_models', {
+      collection: 'models'
+    })
+    if (response.error) {
+      console.warn(response.error)
+      return
+    }
+    return response.value
+  }
 
-  async get_model ({ model_id }) {}
+  async open_model (model) {
+    location.hash = '#/models/' + model._id
+  }
+
+  async get_model (model_id) {
+    let response = await this.api('get_model', {
+      collection: 'models',
+      model: { _id: model_id }
+    })
+    if (response.error) {
+      console.warn(response.error)
+      return
+    }
+    return response.value
+  }
 
   async create_model (model) {
     let response = await this.api('put_model', {
@@ -50,7 +73,9 @@ export default class extends Pantarei.Controller {
     })
     if (response.error) {
       console.warn(response.error)
+      return
     }
+    return response.value
   }
 
   async update_model ({ model_id, model }) {}
