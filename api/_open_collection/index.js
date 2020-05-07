@@ -5,18 +5,24 @@ let cache = {}
 module.exports = async function (collection_name) {
   let collection = cache[collection_name]
   if (collection) {
-    return collection
+    return [null, collection]
   }
 
-  let database = await open_database()
+  let [error, database] = await open_database()
+  if (error) {
+    return [error, null]
+  }
 
-  let create_id = database.create_id
-
-  collection = await database.collection(collection_name)
-
-  collection.create_id = create_id
+  try {
+    collection = await database.collection(collection_name)
+    collection.create_id = database.create_id
+  } catch (error) {
+    console.log({ collection_name })
+    console.warn(error)
+    return [error, null]
+  }
 
   cache[collection_name] = collection
 
-  return collection
+  return [null, collection]
 }

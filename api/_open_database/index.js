@@ -10,16 +10,26 @@ let cache = null
 
 module.exports = async function () {
   if (cache) {
-    return cache
+    return [null, cache]
   }
 
-  let client = await Client.connect(config.database.uri, config.database.params)
+  let client
+  try {
+    client = await Client.connect(config.database.uri, config.database.params)
+  } catch (error) {
+    console.warn(error)
+    return [error, null]
+  }
 
-  let database = await safe(client.db)(config.database.name)
-
-  database.create_id = create_id
+  let database
+  try {
+    database = await client.db(config.database.name)
+    database.create_id = create_id
+  } catch (error) {
+    console.warn(error)
+    return [error, null]
+  }
 
   cache = database
-
-  return database
+  return [null, database]
 }

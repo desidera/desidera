@@ -6,6 +6,14 @@ module.exports = async function (request) {
     return empty
   }
 
+  if (typeof body === 'object') {
+    return body
+  }
+
+  if (typeof body !== 'string') {
+    return empty
+  }
+
   try {
     let data = JSON.parse(body)
     return data
