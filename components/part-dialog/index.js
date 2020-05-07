@@ -2,11 +2,11 @@
 export default class extends Pantarei.Component {
 
   open () {
-    this.toggleAttribute('closed', false)
+    this.toggleAttribute('open', true)
   }
 
   close () {
-    this.toggleAttribute('closed', true)
+    this.toggleAttribute('open', false)
   }
 
   on_click_close (event) {

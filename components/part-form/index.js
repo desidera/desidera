@@ -4,7 +4,6 @@ export default class Part extends Pantarei.Component {
   static get components () {
     return [
       'part-field-date',
-      // 'part-field-email',
       'part-field-number',
       'part-field-string',
       'part-field-text'

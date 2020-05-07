@@ -1,6 +1,34 @@
 
 export default class extends Pantarei.Controller {
 
+  async api (action, params) {
+    let config = {}
+
+    if (params) {
+      config.method = 'POST'
+      config.body = JSON.stringify(params)
+    } else {
+      config.method = 'GET'
+    }
+
+    config.headers = {}
+    config.headers['Accept'] = 'application/json'
+    config.headers['Content-Type'] = 'application/json'
+
+    let token = localStorage.getItem('desidera.token')
+    if (token) {
+      config.headers['Authorization'] = `Bearer ${token}`
+    }
+
+    try {
+      let response = await fetch(`/api/${action}`, config)
+      let data = await response.json()
+      return { data }
+    } catch (error) {
+      return { error }
+    }
+  }
+
   async view_models () {}
 
   async view_model ({ model_id }) {}
@@ -15,7 +43,15 @@ export default class extends Pantarei.Controller {
 
   async get_model ({ model_id }) {}
 
-  async create_model ({ model }) {}
+  async create_model (model) {
+    let response = await this.api('put_model', {
+      collection: 'models',
+      model: model
+    })
+    if (response.error) {
+      console.warn(response.error)
+    }
+  }
 
   async update_model ({ model_id, model }) {}
 

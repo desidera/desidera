@@ -1,4 +1,4 @@
-let open_collection = require('../open_collection/index.js')
+let open_collection = require('../_open_collection/index.js')
 
 module.exports = async function (collection_name) {
   let collection = await open_collection('schemas')

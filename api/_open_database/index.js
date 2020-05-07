@@ -15,7 +15,7 @@ module.exports = async function () {
 
   let client = await Client.connect(config.database.uri, config.database.params)
 
-  let database = await client.db(config.database.name)
+  let database = await safe(client.db)(config.database.name)
 
   database.create_id = create_id
 
