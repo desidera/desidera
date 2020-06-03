@@ -29,14 +29,6 @@ export default class extends Pantarei.Controller {
     }
   }
 
-  async view_models () {}
-
-  async view_model ({ model_id }) {}
-
-  async view_entries (params) {}
-
-  async view_entry ({ content_id }) {}
-
 
 
   async get_models (params) {
@@ -50,11 +42,7 @@ export default class extends Pantarei.Controller {
     return response.value
   }
 
-  async open_model (model) {
-    location.hash = '#/models/' + model._id
-  }
-
-  async get_model (model_id) {
+  async get_model ({ model_id }) {
     let response = await this.api('get_model', {
       collection: 'models',
       model: { _id: model_id }

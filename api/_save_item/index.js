@@ -6,13 +6,12 @@ module.exports = async function (collection_name, item) {
     return [error, null]
   }
 
-  let response
   try {
-    response = await collection.insertOne(item)
-  } catch (error) {
+    let response = await collection.insertOne(item)
+    return [null, response]
+  }
+  catch (error) {
    console.warn(error)
    return [error, null]
   }
-
-  return [null, response]
 }

@@ -4,15 +4,13 @@ let solve_relations = require('../_solve_relations/index.js')
 module.exports = async function (collection_name, id, query) {
   let [error, collection] = await open_collection(collection_name)
   if (error) {
-    console.warn(error)
-    return
+    return [error]
   }
 
   let _id = collection.create_id(id)
   let doc = await collection.findOne({ _id })
-
   if (!doc) {
-    return
+    return [null, null]
   }
 
   if (query && query.includes) {
@@ -21,5 +19,5 @@ module.exports = async function (collection_name, id, query) {
 
   doc._id = doc._id.toString()
 
-  return doc
+  return [null, doc]
 }

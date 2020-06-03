@@ -1,7 +1,8 @@
+import Pantarei from '../pantarei/index.js'
+
 async function main () {
-
-  window.app = await window.Pantarei.App.start()
-
+  await navigator.serviceWorker.register('./sw.js')
+  window.app = await Pantarei.App.start()
 }
 
 main()

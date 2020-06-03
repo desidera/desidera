@@ -1,0 +1,19 @@
+<div id="page">
+
+  <div id="breadcrumbs">
+    <a href="#/models">Models</a>
+  </div>
+
+  <div id="heading">
+    <h1 id="title" text="data.model.name"></h1>
+  </div>
+
+  <div id="main">
+    <div id="description" text="data.model.description"></div>
+    <part-button id="button_edit_model">Edit</part-button>
+
+    <h3 id="subsubtitle">Fields</h3>
+    <part-button id="button_create_field">Add field</part-button>
+    <part-list-field id="fields" data.items="data.model.fields"></part-list-field>
+  </div>
+</div>

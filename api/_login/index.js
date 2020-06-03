@@ -3,23 +3,37 @@ let create_token = require('../_create_token/index.js')
 let save_item = require('../_save_item/index.js')
 
 module.exports = async function (credentials) {
+  let error
+
   let email = credentials.email
   if (!email) {
-    throw new Error('email is undefined')
+    error = new Error('email is undefined')
+    return [error]
   }
 
   let password = credentials.password
   if (!password) {
-    throw new Error('password is undefined')
+    error = new Error('password is undefined')
+    return [error]
   }
 
   let user = await find_item('users', { email })
   if (password !== user.password) {
-    throw new Error('Authentication failed!')
+    error = new Error('Authentication failed!')
+    return [error]
   }
 
-  let token = await create_token(email)
-  await save_item('tokens', { token })
+  let token
+  [error, token] = await create_token(email)
+  if (error) {
+    return [error]
+  }
 
-  return token
+  let response
+  [error, response] = await save_item('tokens', { token })
+  if (error) {
+    return [error]
+  }
+
+  return [null, token]
 }

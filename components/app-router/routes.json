@@ -1,0 +1,56 @@
+[
+  {
+    "name": "home",
+    "component": "page-home"
+  },
+  {
+    "name": "entries",
+    "component": "page-home",
+    "routes": [
+      {
+        "param": "model_id",
+        "component": "page-entries",
+        "routes": [
+          {
+            "name": "new",
+            "component": "page-entry-new"
+          },
+          {
+            "param": "entry_id",
+            "component": "page-entry"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "models",
+    "component": "page-models",
+    "routes": [
+      {
+        "name": "new",
+        "component": "page-model-new"
+      },
+      {
+        "param": "model_id",
+        "component": "page-model",
+        "routes": [
+          {
+            "name": "fields",
+            "component": "page-model",
+            "routes": [
+              {
+                "name": "new",
+                "component": "page-model-field-new"
+              },
+              {
+                "param": "field_id",
+                "component": "page-model-field"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
