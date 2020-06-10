@@ -1,0 +1,9 @@
+{
+  "imports": [
+    {
+      "name": "pantarei",
+      "owner": "pantareijs",
+      "version": "4.6.0"
+    }
+  ]
+}
