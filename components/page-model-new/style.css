@@ -1,3 +1,12 @@
 :host {
   display: block;
 }
+
+#page {
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+#form {
+  margin-bottom: 20px;
+}

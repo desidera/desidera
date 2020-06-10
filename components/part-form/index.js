@@ -3,31 +3,37 @@ export default class Part extends Pantarei.Component {
 
   static get components () {
     return [
+      'part-field-boolean',
       'part-field-date',
+      'part-field-enum',
       'part-field-number',
       'part-field-string',
-      'part-field-text',
-      'part-field-enum'
+      'part-field-text'
     ]
-  }
-
-  constructor () {
-    super()
-    this.components = {}
   }
 
   get values () {
     let values = {}
-    let components = this.components
-    for (let field_id in components) {
-      let component = components[field_id]
-      values[field_id] = component.value
+    let fields = this.fields
+    for (let field_id in fields) {
+      let field = fields[field_id]
+      values[field_id] = field.value
     }
     return values
   }
 
-  render () {
+  async rendered () {
+    if (this.data && this.fields && this.data.fields !== this._fields) {
+      this._destroy()
+    }
     this._build()
+  }
+
+  _destroy () {
+    for (let field of this.fields) {
+      field.remove()
+    }
+    this._built = false
   }
 
   _build () {
@@ -39,8 +45,10 @@ export default class Part extends Pantarei.Component {
       return
     }
 
+    this.fields = {}
     this._build_fields(this.data.fields)
 
+    this._fields = this.data.fields
     this._built = true
   }
 
@@ -59,8 +67,8 @@ export default class Part extends Pantarei.Component {
     component.data.id = field.id
     component.data.label = field.label || field.name
     component.data.schema = field
-    this.appendChild(component)
-    this.components[field.id] = component
+    this.refs.fieldset.appendChild(component)
+    this.fields[field.id] = component
   }
 
 }

@@ -1,7 +1,5 @@
 <div id="part">
-  <div id="links">
-    <a class="link" href="#/">Home</a>
-    <a class="link" href="#/models">Models</a>
-    <a class="link" href="#/content">Content</a>
+  <div id="links" repeat="data.menu.items">
+    <a id="link" attr.href="scope.item.link" text="scope.item.label"></a>
   </div>
 </div>

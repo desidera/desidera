@@ -4,13 +4,7 @@ export default class extends Pantarei.Controller {
   async api (action, params) {
     let config = {}
 
-    if (params) {
-      config.method = 'POST'
-      config.body = JSON.stringify(params)
-    } else {
-      config.method = 'GET'
-    }
-
+    config.method = 'GET'
     config.headers = {}
     config.headers['Accept'] = 'application/json'
     config.headers['Content-Type'] = 'application/json'
@@ -21,10 +15,19 @@ export default class extends Pantarei.Controller {
     }
 
     try {
-      let response = await fetch(`/api/${action}`, config)
+      let url = new URL(`${location.origin}/api/${action}`)
+      if (params) {
+        for (let key in params) {
+          let value = params[key]
+          let value_string = JSON.stringify(value)
+          url.searchParams.append(key, value_string)
+        }
+      }
+      let response = await fetch(url, config)
       let data = await response.json()
       return { value: data.value }
     } catch (error) {
+      console.log(error)
       return { error }
     }
   }
@@ -39,7 +42,13 @@ export default class extends Pantarei.Controller {
       console.warn(response.error)
       return
     }
-    return response.value
+    let models = response.value
+
+    for (let model of models) {
+      model.link = `#/models/${model._id}`
+    }
+
+    return models
   }
 
   async get_model ({ model_id }) {
@@ -51,7 +60,14 @@ export default class extends Pantarei.Controller {
       console.warn(response.error)
       return
     }
-    return response.value
+
+    let model = response.value
+    model.link = `#/models/${model._id}`
+    let fields = model.fields || []
+    for (let field of fields) {
+      field.link = model.link + `/fields/${field._id}`
+    }
+    return model
   }
 
   async create_model (model) {
@@ -74,9 +90,21 @@ export default class extends Pantarei.Controller {
 
   async get_model_fields ({ model_id }) {}
 
-  async get_model_field ({ model_id, field_id }) {}
+  async get_model_field ({ model_id, field_id }) {
+    let model = await this.get_model({ model_id })
+    let fields = model.fields || []
+    let field = fields.find(field => field.name === field_id)
+    return field
+  }
 
   async create_model_field ({ model_id, field }) {
+    if (!field.name) {
+      let error = new Error('missing field name')
+      console.warn(error)
+      return { ok: false, error: error.message }
+    }
+    field._id = field.name
+
     let response = await this.api('put_model_field', {
       collection_name: 'models',
       model_id: model_id,
@@ -89,6 +117,28 @@ export default class extends Pantarei.Controller {
   async update_model_field ({ model_id, field_id, field }) {}
 
   async delete_model_field ({ model_id, field_id }) {}
+
+
+
+  async get_field_schema (field_type) {
+    return [
+      {
+        "type": "boolean",
+        "name": "option1",
+        "description": "This is the option 1"
+      },
+      {
+        "type": "boolean",
+        "name": "option2",
+        "description": "This is the option 2"
+      },
+      {
+        "type": "boolean",
+        "name": "option3",
+        "description": "This is the option 3"
+      }
+    ]
+  }
 
 
 

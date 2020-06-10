@@ -1,13 +1,11 @@
-<div id="page">
-  <div id="heading">
-    <h1 id="title">Content</h1>
-    <h2 id="subtitle">Entries</h2>
-  </div>
-  <div id="side">
-    <part-list-model id="models" data.models="data.models"></part-list-model>
-  </div>
-  <div id="main">
-    <a id="new" attr.href="">Add new entry</button>
-    <part-list-entry id="entries"  data.model="data.model" data.entries="data.entries"></part-list-entry>
-  </div>
+<div id="heading">
+  <h1 id="title">Content</h1>
+  <h2 id="subtitle">Entries</h2>
+</div>
+<div id="side">
+  <part-list-model id="models" data.models="data.models"></part-list-model>
+</div>
+<div id="main">
+  <part-button id="new" data.link="data.link_new_entry">Add new entry</part-button>
+  <part-list-entry id="entries"  data.model="data.model" data.entries="data.entries"></part-list-entry>
 </div>

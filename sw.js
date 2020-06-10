@@ -1,4 +1,4 @@
-self.importScripts('../pantarei/modules/sw/index.js')
+self.importScripts('http://localhost:2000/pantarei/modules/sw/index.js')
 
 const version = '0.0.1'
 const service = new self.Service(version)

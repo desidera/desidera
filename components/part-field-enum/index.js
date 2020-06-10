@@ -5,7 +5,7 @@ export default class extends Pantarei.Component {
     return this.refs.input.value
   }
 
-  render () {
+  rendered () {
     this._build()
   }
 
@@ -24,7 +24,7 @@ export default class extends Pantarei.Component {
       return
     }
 
-    let input = this.refs.input
+    let input = this.parts.input
     for (let option of options) {
       let option_element = document.createElement('option')
       option_element.value = option

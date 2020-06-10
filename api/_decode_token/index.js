@@ -5,10 +5,10 @@ module.exports = function (token) {
   return new Promise(function (resolve) {
     jwt.verify(token, config.secret, function (error, decoded) {
       if (error) {
-        resolve(null)
+        resolve([error, null])
         return
       }
-      resolve(decoded)
+      resolve([null, decoded])
     })
   })
 }

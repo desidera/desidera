@@ -8,7 +8,10 @@ module.exports = api(async function (request) {
   let model = body.model
   let query = body.query
 
-  let item = await find_item(collection_name, model._id, query)
+  let [error, item] = await find_item(collection_name, model._id, query)
+  if (error) {
+    return [error]
+  }
 
-  return item
+  return [null, item]
 })

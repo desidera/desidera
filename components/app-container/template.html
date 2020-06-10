@@ -1,6 +1,9 @@
 <div id="app">
-  <part-navbar id="navbar"></part-navbar>
-  <div id="container">
+  <div id="header">
+    <part-navbar id="navbar" data.menu="data.menu"></part-navbar>
+  </div>
+  <div id="main">
     <slot></slot>
   </div>
+  <div id="footer"></div>
 </div>

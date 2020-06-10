@@ -1,3 +1,5 @@
 :host {
-  display: block;
+  display: grid;
+  grid-auto-flow: row;
+  grid-row-gap: 20px;
 }

@@ -9,24 +9,7 @@
 }
 
 #app {
-  display: flex;
-}
-
-#navbar {
-  position: fixed;
-  top: 0;
-
-  box-sizing: border-box;
-  width: 100%;
-  height: var(--navbar-height);
-}
-
-#container {
-  padding-top: var(--navbar-height);
-  flex: 1;
-}
-
-#sidebar {
-  box-sizing: border-box;
-  padding: 40px 20px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-auto-flow: column;
 }

@@ -2,6 +2,12 @@
   display: block;
 }
 
+#fieldset {
+  display: grid;
+  grid-auto-flow: row;
+  grid-row-gap: 20px;
+}
+
 .field {
-  margin-bottom: 2em;
+
 }

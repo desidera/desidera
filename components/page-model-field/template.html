@@ -1,12 +1,14 @@
-<div id="page">
-
-  <div id="heading">
-    <div id="title"></div>
-  </div>
-
-  <div id="main">
-    <part-form-field id="form"></part-form-field>
-    <button id="update" ev.click="on_click_update">Update</button>
-  </div>
-
+<div id="heading">
+  <h1 id="title">
+    <span>Model:</span>
+    <span text="data.model.name"></span>
+  </h1>
+  <h2 id="subtitle">
+    <span>Field:</span>
+    <span text="data.field.name"></span>
+  </h2>
+</div>
+<div id="main">
+  <part-form-edit-field id="form" data.fields="data.field_schema"></part-form-edit-field>
+  <part-button id="update" ev.click="on_click_update">Update</part-button>
 </div>

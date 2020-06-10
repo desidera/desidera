@@ -1,17 +1,12 @@
 
 module.exports = function (handler) {
   return async function (request, response) {
-    let error
-    let value
+    let error, value
 
-    try {
-      [error, value] = await handler(request, response)
-    } catch (hander_error) {
-      error = handler_error
-    }
+    [error, value] = await handler(request)
 
     if (error) {
-      error = error.message
+      console.log(error)
       response.status(200).json({ ok: false, error })
       return
     }

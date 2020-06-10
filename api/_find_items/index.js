@@ -8,7 +8,7 @@ module.exports = async function (collection_name, query) {
     return [error, null]
   }
 
-  let cursor = collection.find(query)
+  let cursor = await collection.find(query)
 
   if (query.order_by) {
     cursor.sort(query.order_by)
@@ -20,7 +20,7 @@ module.exports = async function (collection_name, query) {
     cursor.limit(query.per_page)
   }
 
-  let items = cursor.toArray()
+  let items = await cursor.toArray()
 
-  return items
+  return [null, items]
 }

@@ -7,7 +7,11 @@ module.exports = api(async function (request) {
   let collection_name = body.collection
   let query = body.query || {}
 
-  let item = await find_items(collection_name, query)
+  let [error, items] = await find_items(collection_name, query)
+  if (error) {
+    return [error, null]
+  }
 
-  return item
+  let result = [null, items]
+  return result
 })
