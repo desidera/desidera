@@ -10,11 +10,11 @@ export default class extends Pantarei.Container {
         },
         {
           label: "Models",
-          link: '#/models'
+          link: '#/admin/models'
         },
         {
           label: "Content",
-          link: '#/entries'
+          link: '#/editor'
         }
       ]
     }

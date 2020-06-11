@@ -1,0 +1,16 @@
+<div id="page">
+  <div id="heading">
+    <h1 id="title" text="data.model.name"></h1>
+  </div>
+  <div id="main">
+    <div id="section">
+      <div id="description" text="data.model.description"></div>
+      <part-button id="button_edit_model">Edit</part-button>
+    </div>
+    <div id="section">
+      <h2 id="subsubtitle">Fields</h2>
+      <part-button data.link="data.link_new_field">New field</part-button>
+      <part-list-field id="fields" data.items="data.model.fields"></part-list-field>
+    </div>
+  </div>
+</div>

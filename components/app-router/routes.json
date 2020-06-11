@@ -4,48 +4,82 @@
     "component": "page-home"
   },
   {
-    "name": "entries",
-    "component": "page-entries",
+    "name": "admin",
+    "component": "page-admin",
     "routes": [
       {
-        "param": "model_id",
-        "component": "page-entries",
+        "name": "models",
+        "component": "page-admin-list-model",
         "routes": [
           {
-            "name": "new",
-            "component": "page-entry-new"
+            "name": "+",
+            "component": "page-admin-make-model"
           },
           {
-            "param": "entry_id",
-            "component": "page-entry"
+            "param": "model_id",
+            "component": "page-admin-view-model",
+            "routes": [
+              {
+                "name": "edit",
+                "component": "page-admin-edit-model"
+              },
+              {
+                "name": "fields",
+                "component": "page-admin-view-model",
+                "routes": [
+                  {
+                    "name": "+",
+                    "component": "page-admin-make-field"
+                  },
+                  {
+                    "param": "field_id",
+                    "component": "page-admin-edit-field",
+                    "routes": [
+                      {
+                        "name": "edit",
+                        "component": "page-admin-edit-field"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           }
         ]
       }
     ]
   },
   {
-    "name": "models",
-    "component": "page-models",
+    "name": "editor",
+    "component": "page-editor",
     "routes": [
       {
-        "name": "new",
-        "component": "page-model-new"
-      },
-      {
-        "param": "model_id",
-        "component": "page-model",
+        "name": "models",
+        "component": "page-editor",
         "routes": [
           {
-            "name": "fields",
-            "component": "page-model",
+            "param": "model_id",
+            "component": "page-editor-list-entry",
             "routes": [
               {
-                "name": "new",
-                "component": "page-model-field-new"
-              },
-              {
-                "param": "field_id",
-                "component": "page-model-field"
+                "name": "entries",
+                "component": "page-editor-list-entry",
+                "routes": [
+                  {
+                    "name": "+",
+                    "component": "page-editor-make-entry"
+                  },
+                  {
+                    "param": "entry_id",
+                    "component": "page-editor-edit-entry",
+                    "routes": [
+                      {
+                        "name": "edit",
+                        "component": "page-editor-edit-entry"
+                      }
+                    ]
+                  }
+                ]
               }
             ]
           }

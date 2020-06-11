@@ -32,8 +32,6 @@ export default class extends Pantarei.Controller {
     }
   }
 
-
-
   async get_models (params) {
     let response = await this.api('get_models', {
       collection: 'models'
@@ -45,7 +43,7 @@ export default class extends Pantarei.Controller {
     let models = response.value
 
     for (let model of models) {
-      model.link = `#/models/${model._id}`
+      model.link = `#/admin/models/${model._id}`
     }
 
     return models
@@ -62,10 +60,10 @@ export default class extends Pantarei.Controller {
     }
 
     let model = response.value
-    model.link = `#/models/${model._id}`
+    model.link = `#/admin/models/${model._id}`
     let fields = model.fields || []
     for (let field of fields) {
-      field.link = model.link + `/fields/${field._id}`
+      field.link = model.link + `/fields/${field._id}/edit`
     }
     return model
   }
@@ -139,8 +137,6 @@ export default class extends Pantarei.Controller {
       }
     ]
   }
-
-
 
   async get_entries ({ model_id }) {}
 
