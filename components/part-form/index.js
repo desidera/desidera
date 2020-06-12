@@ -64,11 +64,12 @@ export default class Part extends Pantarei.Component {
     let component = document.createElement(component_name)
     component.classList.add('field')
     component.data = component.data || {}
-    component.data.id = field.id
+    let id = field.id || field._id || field.name
+    component.data.id = id
     component.data.label = field.label || field.name
     component.data.schema = field
     this.refs.fieldset.appendChild(component)
-    this.fields[field.id] = component
+    this.fields[id] = component
   }
 
 }

@@ -1,6 +1,10 @@
 <div id="page">
-  <h1 id="title">Content</h1>
-  <h2 text="data.entry.id"></h2>
-  <part-form-entry id="form"></part-form-entry>
-  <part-button id="create" ev.click="on_click_create">Create</part-button>
+  <div id="heading">
+    <h1 id="title">Editor</h1>
+    <h2 text="data.model.name"></h2>
+  </div>
+  <div id="main">
+    <part-form-entry id="form" data.model="data.model"></part-form-entry>
+    <part-button id="create" ev.click="on_click_create">Create</part-button>
+  </div>
 </div>

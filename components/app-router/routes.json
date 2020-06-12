@@ -5,7 +5,7 @@
   },
   {
     "name": "admin",
-    "component": "page-admin",
+    "component": "page-admin-list-model",
     "routes": [
       {
         "name": "models",
@@ -63,7 +63,6 @@
             "routes": [
               {
                 "name": "entries",
-                "component": "page-editor-list-entry",
                 "routes": [
                   {
                     "name": "+",
