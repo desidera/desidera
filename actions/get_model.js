@@ -1,8 +1,6 @@
 import api from './api.js'
 
 export default async function ({ model_id }) {
-  console.log(this)
-
   let response = await api('get_model', {
     collection: 'models',
     model: { _id: model_id }

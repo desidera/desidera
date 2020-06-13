@@ -59,15 +59,19 @@ export default class Part extends Pantarei.Component {
   }
 
   _build_field (field) {
+    let id = field.id || field._id || field.name
     let type = field.type || 'string'
+    let name = field.name
+    let label = field.label || field.name
+
     let component_name = `part-field-${type}`
     let component = document.createElement(component_name)
     component.classList.add('field')
     component.data = component.data || {}
-    let id = field.id || field._id || field.name
     component.data.id = id
-    component.data.label = field.label || field.name
+    component.data.label = label
     component.data.schema = field
+
     this.refs.fieldset.appendChild(component)
     this.fields[id] = component
   }
