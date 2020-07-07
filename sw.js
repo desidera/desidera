@@ -1,7 +1,6 @@
-self.importScripts('http://localhost:2000/pantarei/modules/sw/index.js')
+self.importScripts('https://unpkg.com/pantarei@4.8.0/modules/sw/index.js')
 
-const version = '0.0.1'
-const service = new self.Service(version)
+let service = new self.Service('0.0.1')
 
 self.addEventListener('install', service.on_install)
 self.addEventListener('activate', service.on_activate)

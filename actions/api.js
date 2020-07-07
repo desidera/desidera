@@ -23,10 +23,10 @@ export default async function (action, params) {
     }
     let response = await fetch(url, config)
     let data = await response.json()
-    return { value: data.value }
+
+    return [null, data]
   } catch (error) {
-    console.log(error)
-    return { error }
+    return [error, null]
   }
 
 }

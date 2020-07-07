@@ -1,9 +1,8 @@
-let api = require('../_api/index.js')
-let parse_body = require('../_parse_body/index.js')
-let signup = require('../_signup/index.js')
+let api = require('../_/api/index.js')
+let signup = require('../_/signup/index.js')
 
 module.exports = api(async function (request) {
-  let body = await parse_body(request)
+  let body = request.body
   let email = body.email
   let password = body.password
   let credentials = { email, password }

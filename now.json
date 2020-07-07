@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "env": {
+    "mongodb_username": "@desidera_mongodb_username",
+    "mongodb_password": "@desidera_mongodb_password",
+    "mongodb_cluster_name": "@desidera_mongodb_cluster_name",
+    "mongodb_database_name": "@desidera_mongodb_database_name",
+    "mongodb_private_key": "@desidera_mongodb_private_key"
+  },
+  "routes": [
+    {
+      "src": "/.*",
+      "headers": {
+        "Access-Control-Allow-Headers": "*",
+        "Access-Control-Allow-Methods": "*",
+        "Access-Control-Allow-Origin": "*"
+      },
+      "continue": true
+    }
+  ]
+}
