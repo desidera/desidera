@@ -1,9 +1,7 @@
 
 module.exports = function (handler) {
   return async function (request, response) {
-    let error, value
-
-    [error, value] = await handler(request)
+    let [error, data] = await handler(request)
 
     if (error) {
       console.log(error)
@@ -11,6 +9,6 @@ module.exports = function (handler) {
       return
     }
 
-    response.status(200).json({ ok: true, value })
+    response.status(200).json({ ok: true, data })
   }
 }

@@ -2,7 +2,7 @@
 export default class Page extends Pantarei.Component {
 
   async ready () {
-    this.data.models = await this.action('get_models')
+    this.data.models = await this.action('get_entries_models')
   }
 
 }

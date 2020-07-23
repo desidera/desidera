@@ -1,4 +1,4 @@
-let get_schema = require('../_get_schema/index.js')
+let get_schema = require('../get_schema/index.js')
 
 async function solve_relation (item, relation) {
   if (!relation) {

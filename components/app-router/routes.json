@@ -16,8 +16,8 @@
         "component": "page-admin-make-model"
       },
       {
-        "name": "show-model",
-        "component": "page-admin-show-model",
+        "name": "view-model",
+        "component": "page-admin-view-model",
         "params": [
           {
             "name": "model_id"

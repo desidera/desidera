@@ -8,12 +8,10 @@ export default  async function (params) {
   }
 
   for (let model of models) {
-    let model_id = model._id
-    let params = `model_id=${model_id}`
-    model.view_link = `#/admin/view-model?${params}`
-    model.edit_link = `#/admin/edit-model?${params}`
+    let model_name = model.name
+    let params = `model_name=${model_name}`
+    model.view_link = `#/editor/list-entry?${params}`
   }
 
   return models
 }
-

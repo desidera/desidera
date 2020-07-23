@@ -2,11 +2,9 @@ let api = require('../_/api/index.js')
 let get_items = require('../_/get_items/index.js')
 
 module.exports = api(async function (request) {
-  let body = request.body
-  let collection_name = body.collection_name
-  let query = body.query || {}
+  let collection_name = request.query.model_name
 
-  let [error, items] = await get_items(collection_name, query)
+  let [error, items] = await get_items(collection_name)
   if (error) {
     return [error, null]
   }

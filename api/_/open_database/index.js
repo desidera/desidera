@@ -1,15 +1,14 @@
 let MongoDB = require('mongodb')
 
-let config = require('../_config/index.js')
+let config = require('../config/index.js')
 
 let Client = MongoDB.MongoClient
-
-let create_id = MongoDB.ObjectId
 
 let cache = null
 
 module.exports = async function () {
   if (cache) {
+    console.log(`get database from cache`)
     return [null, cache]
   }
 
@@ -24,7 +23,6 @@ module.exports = async function () {
   let database
   try {
     database = await client.db(config.database.name)
-    database.create_id = create_id
   } catch (error) {
     console.warn(error)
     return [error, null]

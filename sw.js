@@ -1,4 +1,5 @@
-self.importScripts('https://unpkg.com/pantarei@4.8.0/modules/sw/index.js')
+// self.importScripts('https://unpkg.com/pantarei@4.8.0/modules/sw/index.js')
+self.importScripts('http://localhost:2000/pantarei/index.js')
 
 let service = new self.Service('0.0.1')
 

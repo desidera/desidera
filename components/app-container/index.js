@@ -1,23 +1,10 @@
 
 export default class extends Pantarei.Container {
 
+  static module_url = import.meta.url
+
   async ready () {
-    this.data.menu = {
-      items: [
-        {
-          label: "Home",
-          link: '#/'
-        },
-        {
-          label: "Admin",
-          link: '#/admin'
-        },
-        {
-          label: "Editor",
-          link: '#/editor'
-        }
-      ]
-    }
+    this.data.menu = await this.action('get_menu', 'main')
   }
 
 }

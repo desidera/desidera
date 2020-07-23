@@ -5,20 +5,24 @@ export default class extends Pantarei.Component {
     return this.refs.form.values
   }
 
-  ready () {
-    this.data.schema = {
-      "fields": [
-        {
-          "id": "name",
-          "name": "name",
-          "type": "string"
-        },
-        {
-          "id": "description",
-          "name": "description",
-          "type": "string"
-        }
-      ]
+  async ready () {
+    this.data.fields = [
+      {
+        "id": "name",
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "id": "description",
+        "name": "description",
+        "type": "string"
+      }
+    ]
+  }
+
+  async rendered () {
+    if (this.data && this.data.values && this._values !== this.data.values) {
+
     }
   }
 

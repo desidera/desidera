@@ -1,5 +1,5 @@
 let jwt = require('jsonwebtoken')
-let config = require('../_config/index.js')
+let config = require('../config/index.js')
 
 module.exports = function (token) {
   return new Promise(function (resolve) {

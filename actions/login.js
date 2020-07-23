@@ -1,9 +1,7 @@
 import api from './api.js'
 
 export default async function (params) {
-  let method = ''
-
-  let [err, res] = await api(method, params)
+  let [err, res] = await api('login', params)
   if (err) {
     console.warn(err)
     return [err]

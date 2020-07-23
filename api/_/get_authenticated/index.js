@@ -1,4 +1,4 @@
-let decode_token = require('../_decode_token/index.js')
+let decode_token = require('../decode_token/index.js')
 let item = require('../find_item/index.js')
 
 module.exports = async function (token) {

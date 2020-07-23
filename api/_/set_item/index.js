@@ -1,4 +1,5 @@
-let open_collection = require('../_open_collection/index.js')
+let open_collection = require('../open_collection/index.js')
+let create_id = require('../create_id/index.js')
 
 module.exports = async function (collection_name, item) {
   let [error, collection] = await open_collection(collection_name)
@@ -7,7 +8,7 @@ module.exports = async function (collection_name, item) {
   }
 
   try {
-    let _id = collection.create_id(item._id)
+    let _id = create_id(item._id)
     delete item._id
     let response = await collection.updateOne({ _id }, { $set: item })
     return [null, response]

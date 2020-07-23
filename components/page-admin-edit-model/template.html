@@ -1,16 +1,10 @@
 <div id="page">
   <div id="heading">
+    <h2>Edit model</h2>
     <h1 id="title" text="data.model.name"></h1>
   </div>
   <div id="main">
-    <div id="section">
-      <div id="description" text="data.model.description"></div>
-      <part-button id="button_edit_model">Edit</part-button>
-    </div>
-    <div id="section">
-      <h2 id="subsubtitle">Fields</h2>
-      <part-button data.link="data.link_new_field">Add field</part-button>
-      <part-list-field id="fields" data.items="data.model.fields"></part-list-field>
-    </div>
+    <part-form-model id="form" data.values="data.model"></part-form-model>
+    <part-button id="update" ev.click="on_click_update">Update</part-button>
   </div>
 </div>

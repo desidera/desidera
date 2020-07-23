@@ -1,4 +1,5 @@
-let open_collection = require('../_open_collection/index.js')
+let open_collection = require('../open_collection/index.js')
+let create_id = require('../create_id/index.js')
 
 module.exports = async function (collection_name, model_id, field_name, field) {
   let [error, collection] = await open_collection(collection_name)
@@ -7,7 +8,7 @@ module.exports = async function (collection_name, model_id, field_name, field) {
     return
   }
 
-  let _id = collection.create_id(model_id)
+  let _id = create_id(model_id)
   let query = { $push: { [field_name]: field } }
   let doc = await collection.update({ _id }, query)
 

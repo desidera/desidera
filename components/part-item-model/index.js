@@ -1,4 +1,4 @@
 
-export default class Part extends Pantarei.Component {
+export default class extends Pantarei.Component {
 
 }

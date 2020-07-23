@@ -1,3 +1,4 @@
+import get_menu from './get_menu.js'
 
 import get_models from './get_models.js'
 import add_model from './add_model.js'
@@ -17,9 +18,13 @@ import del_entry from './del_entry.js'
 import get_entry from './get_entry.js'
 import set_entry from './set_entry.js'
 
+import get_entries_models from './get_entries_models.js'
+
 import api from './api.js'
 
 export default {
+  get_menu,
+
   get_models,
   add_model,
   del_model,
@@ -37,6 +42,8 @@ export default {
   del_entry,
   get_entry,
   set_entry,
+
+  get_entries_models,
 
   api
 }
