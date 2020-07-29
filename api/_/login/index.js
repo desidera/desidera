@@ -1,6 +1,6 @@
-let find_item = require('../find_item/index.js')
+let find_item = require('../get_item/index.js')
 let create_token = require('../create_token/index.js')
-let save_item = require('../save_item/index.js')
+let save_item = require('../set_item/index.js')
 
 module.exports = async function (credentials) {
   let error

@@ -1,0 +1,26 @@
+{
+  "name": "desidera",
+  "version": "0.0.1",
+  "description": "Work in progress...",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/desidera/desidera.git"
+  },
+  "author": "Enrico Marino",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/desidera/desidera/issues"
+  },
+  "homepage": "https://github.com/desidera/desidera#readme",
+  "dependencies": {
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.5.9"
+  }
+}

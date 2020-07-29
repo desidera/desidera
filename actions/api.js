@@ -1,34 +1,37 @@
 
-export default async function (action, params) {
-  let config = {}
-
-  config.method = 'GET'
-  config.headers = {}
-  config.headers['Accept'] = 'application/json'
-  config.headers['Content-Type'] = 'application/json'
-
+function get_token () {
   let token = localStorage.getItem('desidera.token')
-  if (token) {
-    config.headers['Authorization'] = `Bearer ${token}`
-  }
+  return token
+}
 
-  let response_data
+export default async function (action, params) {
   try {
-    let url = new URL(`${location.origin}/api/${action}`)
+    let request = {}
 
-    if (params) {
-      let entries = Object.entries(params)
-      for (let [name, value] of entries) {
-        if (typeof value === 'object') {
-          value = JSON.stringify(value)
-        }
-        url.searchParams.append(name, value)
-      }
+    let method = 'POST'
+
+    let headers = {}
+    headers['Accept'] = 'application/json'
+    headers['Content-Type'] = 'application/json'
+
+    let token = get_token()
+    if (token) {
+      headers['Authorization'] = `Bearer ${token}`
     }
 
-    let response = await fetch(url, config)
+    let endpoint = '/api/rpc'
+    let url = new URL(endpoint, location.origin)
+
+    let body = JSON.stringify({ action, params })
+
+    request.method = method
+    request.headers = headers
+    request.body = body
+
+    let response = await fetch(url, request)
+
     let json = await response.json()
-    if (!json.ok) {
+    if (json.error) {
       throw new Error(json.error)
     }
     let data = json.data

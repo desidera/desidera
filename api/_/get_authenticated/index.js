@@ -1,5 +1,5 @@
 let decode_token = require('../decode_token/index.js')
-let item = require('../find_item/index.js')
+let item = require('../get_item/index.js')
 
 module.exports = async function (token) {
   let [error, decoded] = await decode_token(token)

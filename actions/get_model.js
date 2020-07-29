@@ -7,8 +7,6 @@ export default async function ({ model_id }) {
     return
   }
 
-
-
   model.edit_link = `#/admin/edit-model?model_id=${model_id}`
 
   return model

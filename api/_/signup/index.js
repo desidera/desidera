@@ -1,14 +1,14 @@
-let find_item = require('../find_item/index.js')
-let save_item = require('../save_item/index.js')
+let find_item = require('../get_item/index.js')
+let save_item = require('../set_item/index.js')
 
-module.exports = async function (credentials) {
-  let email = credentials.email
+module.exports = async function (params) {
+  let email = params.email
   if (!email) {
     let error = new Error('email is undefined')
     return [error, null]
   }
 
-  let password = credentials.password
+  let password = params.password
   if (!password) {
     let error = new Error('password is undefined')
     return [error, null]

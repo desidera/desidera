@@ -1,5 +1,4 @@
-let api = require('./_/api/index.js')
 
-module.exports = api(async function () {
-  return true
-})
+module.exports = async function (request, response) {
+  response.status(200).json({ ok: true })
+}
